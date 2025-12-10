@@ -34,4 +34,51 @@ public class Persona {
         return email;
     }
 
+    public static Persona factory(String cadena) {
+        if (cadena == null) {
+            throw new IllegalArgumentException("No son válidos los argumentos");
+        }
+
+        String partes[] = cadena.split(",");
+
+        if (partes.length != 4) {
+            throw new IllegalArgumentException("No son válidos los argumentos");
+        }
+
+        try {
+            int edad = Integer.parseInt(partes[2]);
+            return new Persona(partes[0], partes[1], edad, partes[3]);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("No es válida la edad");
+        }
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }
